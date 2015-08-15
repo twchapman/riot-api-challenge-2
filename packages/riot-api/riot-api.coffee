@@ -48,9 +48,9 @@ apiCall = (endpointObject, params) ->
 RiotAPI.champion =
   version: '1.2'
   base: '/champion'
-  getAll: =>
+  getAll: ->
     return apiCall(this, '')
-  get: (id) =>
+  get: (id) ->
     return apiCall(this, id)
 
 RiotAPI.currentGame =
@@ -62,57 +62,57 @@ RiotAPI.featuredGames =
 RiotAPI.game =
   version: '1.0'
   base: '/game'
-  getBySummonerId: (id) =>
+  getBySummonerId: (id) ->
     return apiCall(this, "by-summoner/#{id}/recent")
 
 RiotAPI.league =
   version: '1.0'
   base: '/league'
-  getBySummonerId: (ids) =>
+  getBySummonerId: (ids) ->
     return apiCall(this, "by-summoner/#{ids.join(',')}")
-  getEntriesBySummonerId: (ids) =>
+  getEntriesBySummonerId: (ids) ->
     return apiCall(this, "by-summoner/#{ids.join(',')}/entry")
-  getByTeamId: (ids) =>
+  getByTeamId: (ids) ->
     return apiCall(this, "by-team/#{ids.join(',')}")
-  getEntriesByTeamId: (ids) =>
+  getEntriesByTeamId: (ids) ->
     return apiCall(this, "by-team/#{ids.join(',')}")
-  getChallenger: =>
+  getChallenger: ->
     return apiCall(this, 'challenger')
-  getMaster: =>
+  getMaster: ->
     return apiCall(this, 'master')
 
 RiotAPI.staticData =
   version: '1.2'
   base: '/static-data'
-  getChampions: =>
+  getChampions: ->
     return apiCall(this, 'champion')
-  getChampion: (id) =>
+  getChampion: (id) ->
     return apiCall(this, "champion/#{id}")
-  getItems: =>
+  getItems: ->
     return apiCall(this, 'item')
-  getItem: (id) =>
+  getItem: (id) ->
     return apiCall(this, "item/#{id}")
-  getLanguageStrings: =>
+  getLanguageStrings: ->
     return apiCall(this, 'language-strings')
-  getLanguages: =>
+  getLanguages: ->
     return apiCall(this, 'languages')
-  getMap: =>
+  getMap: ->
     return apiCall(this, 'map')
-  getMasteries: =>
+  getMasteries: ->
     return apiCall(this, 'mastery')
-  getMastery: (id) =>
+  getMastery: (id) ->
     return apiCall(this, "mastery/#{id}")
-  getRealms: =>
+  getRealms: ->
     return apiCall(this, 'realm')
-  getRunes: =>
+  getRunes: ->
     return apiCall(this, 'rune')
-  getRune: (id) =>
+  getRune: (id) ->
     return apiCall(this, "rune/#{id}")
-  getSummonerSpells: =>
+  getSummonerSpells: ->
     return apiCall(this, 'summoner-spell')
-  getSummonerSpell: (id) =>
+  getSummonerSpell: (id) ->
     return apiCall(this, "summoner-spell/#{id}")
-  getVersions: =>
+  getVersions: ->
     return apiCall(this, 'versions')
 
 RiotAPI.status =
@@ -121,39 +121,41 @@ RiotAPI.status =
 RiotAPI.match =
   version: '2.2'
   base: '/match'
-  get: (id) =>
+  get: (id) ->
     return apiCall(this, id)
 
 RiotAPI.matchhistory =
   version: '2.2'
   base: '/matchhistory'
+  get: (id) ->
+    return apiCall(this, id)
 
 RiotAPI.stats =
   version: '1.3'
   base: '/stats'
-  getRanked: (id) =>
+  getRanked: (id) ->
     return apiCall(this, "by-summoner/#{id}/ranked")
-  getSummary: (id) =>
+  getSummary: (id) ->
     return apiCall(this, "by-summoner/#{id}/summary")
 
 RiotAPI.summoner =
   version: '1.4'
   base: '/summoner'
-  get: (ids) =>
+  get: (ids) ->
     return apiCall(this, ids.join(','))
-  getByName: (names) =>
+  getByName: (names) ->
     return apiCall(this, "by-name/#{names.join(',')}")
-  getMasteries: (ids) =>
+  getMasteries: (ids) ->
     return apiCall(this, "#{ids.join(',')}/masteries")
-  getNames: (ids) =>
+  getNames: (ids) ->
     return apiCall(this, "#{ids.join(',')}/names")
-  getRunes: (ids) =>
+  getRunes: (ids) ->
     return apiCall(this, "#{ids.join(',')}/runes")
 
 RiotAPI.team =
   version: '2.4'
   base: '/team'
-  get: (ids) =>
+  get: (ids) ->
     return apiCall(this, ids.join(','))
   getBySummonerId: (ids) ->
     return apiCall(this, "by-summoner/#{ids}")
