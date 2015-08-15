@@ -45,6 +45,10 @@ apiCall = (endpointObject, params) ->
   url = "https://#{RiotAPI.regions[RiotAPI.region].host}#{RiotAPI.apiBase}/#{RiotAPI.region.toLowerCase()}/v#{endpointObject.version}#{endpointObject.base}/#{params}?api_key=#{Meteor.settings['riotApiKey']}"
   return JSON.parse(HTTP.get(url).content)
 
+staticApiCall = (endpointObject, params) ->
+  url = "https://#{RiotAPI.regions.Global.host}#{RiotAPI.apiBase}#{endpointObject.base}/#{RiotAPI.region.toLowerCase()}/v#{endpointObject.version}/#{params}?api_key=#{Meteor.settings['riotApiKey']}"
+  return JSON.parse(HTTP.get(url).content)
+
 RiotAPI.champion =
   version: '1.2'
   base: '/champion'
@@ -85,35 +89,35 @@ RiotAPI.staticData =
   version: '1.2'
   base: '/static-data'
   getChampions: ->
-    return apiCall(this, 'champion')
+    return staticApiCall(this, 'champion')
   getChampion: (id) ->
-    return apiCall(this, "champion/#{id}")
+    return staticApiCall(this, "champion/#{id}")
   getItems: ->
-    return apiCall(this, 'item')
+    return staticApiCall(this, 'item')
   getItem: (id) ->
-    return apiCall(this, "item/#{id}")
+    return staticApiCall(this, "item/#{id}")
   getLanguageStrings: ->
-    return apiCall(this, 'language-strings')
+    return staticApiCall(this, 'language-strings')
   getLanguages: ->
-    return apiCall(this, 'languages')
+    return staticApiCall(this, 'languages')
   getMap: ->
-    return apiCall(this, 'map')
+    return staticApiCall(this, 'map')
   getMasteries: ->
-    return apiCall(this, 'mastery')
+    return staticApiCall(this, 'mastery')
   getMastery: (id) ->
-    return apiCall(this, "mastery/#{id}")
+    return staticApiCall(this, "mastery/#{id}")
   getRealms: ->
-    return apiCall(this, 'realm')
+    return staticApiCall(this, 'realm')
   getRunes: ->
-    return apiCall(this, 'rune')
+    return staticApiCall(this, 'rune')
   getRune: (id) ->
-    return apiCall(this, "rune/#{id}")
+    return staticApiCall(this, "rune/#{id}")
   getSummonerSpells: ->
-    return apiCall(this, 'summoner-spell')
+    return staticApiCall(this, 'summoner-spell')
   getSummonerSpell: (id) ->
-    return apiCall(this, "summoner-spell/#{id}")
+    return staticApiCall(this, "summoner-spell/#{id}")
   getVersions: ->
-    return apiCall(this, 'versions')
+    return staticApiCall(this, 'versions')
 
 RiotAPI.status =
   version: 'unsupported'
