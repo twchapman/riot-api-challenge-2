@@ -1,0 +1,8 @@
+<template name="Stats">
+{{#each champions}}
+  <div>
+    <h3>{{name}}</h3>
+    {{ > ChampionStats id }}
+  </div>
+{{/each}}
+</template>
